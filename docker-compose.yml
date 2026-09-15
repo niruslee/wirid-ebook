@@ -1,0 +1,6 @@
+services:
+  web:
+    image: docker.io/selawat/dua-ebook-nuxt:latest
+    ports:
+      - "${PORT:-3000}:80"
+    restart: unless-stopped
