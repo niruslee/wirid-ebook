@@ -17,8 +17,25 @@ npm run dev
 
 ```bash
 npm run build
-npm run preview
+npm run serve
 ```
+
+Nuxt จะรัน Node server ที่ `0.0.0.0:3000` เพื่อรับการเชื่อมต่อจากเครื่องอื่น หลังแก้โค้ดให้ build ใหม่แล้วเริ่ม serve อีกครั้ง ใช้ `npm run preview` สำหรับดูตัวอย่าง build ในเครื่องได้เช่นเดิม
+
+### ทดสอบบนมือถือผ่าน IP
+
+หากพอร์ต 3000 ถูกใช้โดย dev server อยู่แล้ว ให้ใช้พอร์ต 3001:
+
+```bash
+PORT=3001 npm run serve
+```
+
+- มือถืออยู่ Wi-Fi เดียวกัน: เปิด `http://<LAN-IP-ของเครื่อง>:3001/reader`
+- มือถือใช้เครือข่ายภายนอก: เปิด `http://<PUBLIC-IP>:3001/reader`
+
+การเข้าผ่าน public IP ต้องอนุญาต TCP พอร์ต 3001 ใน firewall ของเครื่อง/เซิร์ฟเวอร์ด้วย หากรันบนเครื่องหลังเราเตอร์ ให้ทำ port forwarding จาก TCP 3001 ไปยัง LAN IP ของเครื่องที่พอร์ต 3001 หากอินเทอร์เน็ตอยู่หลัง CGNAT ต้องใช้ public IP ที่รับการเชื่อมต่อเข้าได้หรือใช้ tunnel
+
+คำสั่ง `serve` ใช้ค่า `PORT` จาก environment ของ shell โดยตรง ไม่ได้โหลด `.env` อัตโนมัติ (`.env` ในโปรเจกต์ใช้กับ Docker Compose)
 
 สร้าง Static Site:
 
@@ -26,7 +43,7 @@ npm run preview
 npm run generate
 ```
 
-ไฟล์สำหรับนำขึ้น Hosting จะอยู่ใน `.output/public`
+ไฟล์สำหรับนำขึ้น Hosting จะอยู่ใน `.output/public` คำสั่งนี้ยังใช้กับ Docker/Nginx ได้ตามเดิม หากต้องการกลับมารัน `serve` หลัง `generate` ให้รัน `npm run build` อีกครั้งเพื่อสร้าง Node server
 
 ## Docker Hub
 

@@ -1,4 +1,4 @@
-@font-face{font-family:DuaArabic;src:url('/fonts/DejaVuSans.ttf') format('truetype');font-display:swap}
+@font-face{font-family:DuaArabic;src:url('/fonts/Amiri-Regular.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
 :root{--gold:#ddb66d;--gold-light:#f3d68e;--ink:#25180f;--cream:#f7eed7;--green:#102319}
 *{box-sizing:border-box}
 html,body,#__nuxt{margin:0;min-width:320px;min-height:100%;background:#140904;color:#f8e7c2;font-family:Tahoma,'Noto Sans Thai',system-ui,sans-serif}
@@ -25,10 +25,8 @@ button,input{font:inherit}button,a{-webkit-tap-highlight-color:transparent}.home
 .reader-page{overflow:auto;background:radial-gradient(circle at 50% 0,#244b36,#0d1b14 52%);padding-bottom:max(24px,env(safe-area-inset-bottom))}
 .reader-header{position:sticky;z-index:20;top:0;min-height:82px;padding:max(10px,env(safe-area-inset-top)) clamp(12px,3vw,22px) 9px;background:#102219ed;backdrop-filter:blur(12px);box-shadow:0 2px 15px #0007;display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center}.reader-header>div{text-align:center;display:flex;min-width:0;flex-direction:column}.reader-header strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:clamp(13px,2.7vw,18px)}.reader-header small{font-size:12px;color:#baa985}.plain-button{border:0;background:none;color:#f0ce84;font-size:38px;cursor:pointer}.bookmark{font-size:29px}
 .reader-stage{padding:clamp(14px,3vw,28px);display:flex;justify-content:center;perspective:1800px}.paper{width:min(100%,650px);min-height:min(72dvh,760px);position:relative;overflow:hidden;padding:13px;border:1px solid #c29a53;background:radial-gradient(circle at 50% 15%,#fffaf0,var(--cream) 70%);color:#2f241b;box-shadow:0 13px 35px #0008;transform-style:preserve-3d;backface-visibility:hidden}.paper::before,.paper::after{content:'';position:absolute;inset:7px;border:1px solid #d0ad69;pointer-events:none}.paper::after{inset:11px;border-color:#8f6a31}.paper-inner{min-height:inherit;position:relative;z-index:1;padding:clamp(38px,6vw,58px) clamp(17px,5vw,42px) 30px;border:1px solid #c29a53;text-align:center}.corner{position:absolute;z-index:2;color:#9b752e;font-size:25px}.tl{top:13px;left:15px}.tr{top:13px;right:15px}.bl{bottom:13px;left:15px}.br{right:15px;bottom:13px}
-.arabic-content{font-family:DuaArabic,serif;line-height:2;text-align:center;overflow-wrap:anywhere;font-variant-ligatures:common-ligatures}.arabic-content p{margin:0 0 18px;white-space:pre-line}.secondary-text{margin-top:34px;font-family:Tahoma,system-ui,sans-serif;font-size:.55em;line-height:1.7;white-space:pre-line;color:#5f4b2c}.verification{margin:28px auto 0;padding:12px;border:1px solid #b68c45;border-radius:10px;background:#fff7df;font-family:Tahoma,system-ui,sans-serif;font-size:.44em;line-height:1.6;color:#785620}.paper-page-number{margin:30px auto 0;width:34px;height:34px;border:1px solid #ae843d;display:grid;place-items:center;color:#79591f;transform:rotate(45deg)}
+.arabic-content{font-family:DuaArabic,serif;line-height:2;text-align:center;overflow-wrap:anywhere;font-variant-ligatures:common-ligatures}.arabic-content p{margin:0 0 18px;white-space:pre-line}.secondary-text{margin-top:34px;font-family:Tahoma,system-ui,sans-serif;font-size:.55em;line-height:1.7;white-space:pre-line;color:#5f4b2c}.verification{margin:28px auto 0;padding:12px;border:1px solid #b68c45;border-radius:10px;background:#fff7df;font-family:Tahoma,system-ui,sans-serif;font-size:.44em;line-height:1.6;color:#785620}.paper-page-number{position:relative;margin:30px auto 0;width:40px;height:52px;display:grid;place-items:center;color:#39675e;flex-shrink:0}.page-number-frame{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.page-number-value{position:relative;font-family:Tahoma,system-ui,sans-serif;font-size:16px;font-weight:400;font-style:normal;font-variant-numeric:lining-nums tabular-nums;line-height:1;text-align:center}
 .reader-tools,.page-controls{width:min(calc(100% - 28px),650px);margin:0 auto;display:flex;align-items:center}.reader-tools{gap:10px;padding:9px 13px;border:1px solid #a98245;border-radius:16px;background:#17110de6}.reader-tools input{min-width:0;flex:1;accent-color:#d8b46b}.reader-tools button,.page-controls button{min-height:44px;border:0;border-radius:10px;background:#d8b46b;color:#26170d;padding:10px 16px;font-weight:600;cursor:pointer;touch-action:manipulation}.page-controls{justify-content:space-between;padding:14px 0 5px}.page-controls button:disabled{opacity:.35;cursor:not-allowed}
-.page-curl{position:absolute;z-index:8;inset:-2px;pointer-events:none;opacity:0;background:linear-gradient(100deg,transparent 42%,#7f67442b 55%,#fff9e8c7 69%,#6d55313b 86%,transparent)}.paper.page-out-next{transform-origin:left center;animation:pageOutNext .34s ease-in both}.paper.page-in-next{transform-origin:right center;animation:pageInNext .4s ease-out both}.paper.page-out-previous{transform-origin:right center;animation:pageOutPrevious .34s ease-in both}.paper.page-in-previous{transform-origin:left center;animation:pageInPrevious .4s ease-out both}
-@keyframes pageOutNext{to{transform:translateX(-5%) rotateY(-70deg) scaleX(.9);opacity:0;filter:brightness(.7)}}@keyframes pageInNext{from{transform:translateX(5%) rotateY(67deg) scaleX(.9);opacity:0;filter:brightness(.72)}}@keyframes pageOutPrevious{to{transform:translateX(5%) rotateY(70deg) scaleX(.9);opacity:0;filter:brightness(.7)}}@keyframes pageInPrevious{from{transform:translateX(-5%) rotateY(-67deg) scaleX(.9);opacity:0;filter:brightness(.72)}}
 
 /* Phones */
 @media(max-width:480px){.home-title{left:10%;right:10%}.home-title p{font-size:12px}.digital-book{width:clamp(140px,max(39vw,18vh),190px)}.book-label{width:82%;grid-template-columns:22px 1fr 18px}.reader-stage{padding:12px 8px}.paper{padding:9px}.paper-inner{padding-inline:14px}.reader-tools,.page-controls{width:calc(100% - 16px)}}
@@ -40,3 +38,26 @@ button,input{font:inherit}button,a{-webkit-tap-highlight-color:transparent}.home
 /* Wide desktop */
 @media(min-width:1200px){body{background:radial-gradient(circle at 50% 20%,#4b2a17,#100704 72%)}.home-page{border-inline:1px solid #704522}.reader-page{padding-inline:max(20px,calc((100vw - 900px)/2))}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* StPageFlip owns the sheet transforms and moving fold shadows. */
+.reader-book-viewport{position:relative;width:min(100%,650px);height:max(clamp(420px,calc(100svh - 215px),860px),var(--reader-book-height,0px));flex-shrink:0}
+.reader-book-mount,.reader-book{width:100%;height:100%}
+.reader-book-mount{opacity:0;transition:opacity .2s ease}
+.reader-book-viewport.is-ready .reader-book-mount{opacity:1}
+.reader-book{box-shadow:0 16px 35px #0006;cursor:grab}
+.reader-book:active{cursor:grabbing}
+.reader-book .stf__wrapper{position:relative;height:100%;overflow:hidden}
+.reader-book .stf__item{min-height:0;box-shadow:none;backface-visibility:visible}
+.reader-book .paper-inner,.reader-book-measure .paper-inner{height:100%;min-height:0;display:flex;flex-direction:column;padding-top:clamp(30px,5vw,44px);padding-bottom:16px}
+.reader-book .arabic-content,.reader-book-measure .arabic-content{flex:1 0 auto;overflow:visible;touch-action:pan-y;padding:8px 3px 12px;cursor:auto}
+.reader-book .paper-page-number,.reader-book-measure .paper-page-number{margin-top:14px}
+.reader-drag-hint{margin:0 auto;padding:0 16px;max-width:650px;text-align:center;font-size:12px;line-height:1.7;color:#d3c4a6}
+.reader-loading{position:absolute;inset:0;display:grid;place-content:center;margin:0;color:#f3d68e}
+/* Reflect the fold geometry only; Arabic text and page numbers stay readable. */
+.reader-book .stf__block.is-mirrored-turn{transform:scaleX(-1)}
+.reader-book .is-mirrored-turn .paper-inner{transform:scaleX(-1)}
+
+/* Measure the current sheet at its natural height, without a nested scroller. */
+.reader-book-measure{position:absolute;top:0;left:0;width:100%;visibility:hidden;pointer-events:none}
+.reader-book-measure .paper{width:100%;min-height:0}
+.reader-book-measure .paper-inner{height:auto}

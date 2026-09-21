@@ -5,7 +5,8 @@ const router = useRouter()
 
 const currentIndex = ref(0)
 const fontSize = ref(18)
-const turnClass = ref('')
+const flipbook = ref(null)
+const bookReady = ref(false)
 const isTurning = ref(false)
 
 const page = computed(() => duaPages[currentIndex.value])
@@ -19,36 +20,10 @@ const pageText = computed(() => {
 })
 
 const turnPage = direction => {
-  if (isTurning.value) return
-
-  const targetIndex = currentIndex.value + direction
-  
-
-  if (targetIndex < 0 || targetIndex >= duaPages.length) {
-    return
-  }
-
-  isTurning.value = true
-
-  turnClass.value =
-    direction === 1
-      ? 'page-out-previous'
-      : 'page-out-next'
-
-  window.setTimeout(() => {
-    currentIndex.value = targetIndex
-
-    turnClass.value =
-      direction === 1
-        ? 'page-in-next'
-        : 'page-in-previous'
-  }, 340)
-
-  window.setTimeout(() => {
-    turnClass.value = ''
-    isTurning.value = false
-  }, 740)
+  if (!bookReady.value || isTurning.value) return
+  flipbook.value?.turn(direction)
 }
+
 </script>
 
 <template>
@@ -64,32 +39,37 @@ const turnPage = direction => {
 
       <div>
         <strong>วิริดชาวสวนสวรรค์อัลฟิรดาวส์</strong>
-        <small>{{ pageText }}</small>
+        <small aria-live="polite" aria-atomic="true">{{ pageText }}</small>
       </div>
     </header>
 
     <section class="reader-stage">
-      <ReaderPaper
-        :page="page"
+      <ReaderFlipbook
+        ref="flipbook"
+        :pages="duaPages"
         :font-size="fontSize"
-        :turn-class="turnClass"
+        @flip="currentIndex = $event"
+        @busy="isTurning = $event"
+        @ready="bookReady = true"
       />
     </section>
 
-    <div class="page-controls">
+    <p id="reader-drag-hint" class="reader-drag-hint">ลากมุมซ้ายไปขวาเพื่ออ่านหน้าถัดไป</p>
+
+    <!-- <div class="page-controls">
 
       <button
-        :disabled="currentIndex === duaPages.length - 1 || isTurning"
+        :disabled="!bookReady || currentIndex === duaPages.length - 1 || isTurning"
         @click="turnPage(1)"
       >
         ‹ หน้าถัดไป 
       </button>
       <button
-        :disabled="currentIndex === 0 || isTurning"
+        :disabled="!bookReady || currentIndex === 0 || isTurning"
         @click="turnPage(-1)"
       >
          หน้าก่อน ›
       </button>
-    </div>
+    </div> -->
   </main>
 </template>
