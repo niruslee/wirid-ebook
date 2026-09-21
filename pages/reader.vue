@@ -4,7 +4,7 @@ import { duaPages } from '~/data/duaPages'
 const router = useRouter()
 
 const currentIndex = ref(0)
-const fontSize = ref(18)
+const fontSize = ref(22)
 const flipbook = ref(null)
 const bookReady = ref(false)
 const isTurning = ref(false)
